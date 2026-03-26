@@ -1,0 +1,315 @@
+/* Updated CSS for overflow fixes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-grad-1: #ffd6e8;
+    --bg-grad-2: #d8b4fe;
+    --bg-grad-3: #a5f3fc;
+    --text: #2f1b1b;
+    --muted: rgba(47, 27, 27, 0.72);
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --card-border: rgba(255, 255, 255, 0.22);
+    --accent: #ff5c93;
+    --accent-2: #7c3aed;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 20px;
+}
+
+/* Radial glow effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255, 182, 193, 0.2) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        inset 0 0 15px rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    max-width: 100%;
+}
+
+.romantic-image {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto 20px;
+    opacity: 0.8;
+    filter: blur(0px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.main-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--text);
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.sub-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-top: -18px;
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.home-message {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 22px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.18);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 25px;
+}
+
+.primary-btn {
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 50px;
+    padding: 14px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(4px);
+}
+
+.primary-btn:hover {
+    background: rgba(255, 255, 255, 0.48);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.sticker-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.sticker {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transform: rotate(-2deg);
+    animation: float 6s infinite ease-in-out;
+    max-width: calc(50% - 7.5px);
+}
+
+.sticker:nth-child(2) {
+    transform: rotate(2deg);
+    animation-delay: 0.5s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+/* Content pages */
+.content-container {
+    max-height: 75vh;
+    overflow-y: auto;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.content-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.content-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.content-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--text);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    padding: 0 10px;
+}
+
+.back-btn {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    padding: 10px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .main-heading {
+        font-size: 32px;
+    }
+    
+    .glass-card {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 20px;
+    }
+    
+    .main-heading {
+        font-size: 24px;
+    }
+
+    .sub-heading {
+        font-size: 16px;
+        margin-top: -14px;
+    }
+
+    .home-message {
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+    
+    .primary-btn {
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+    
+    .sticker {
+        font-size: 11px;
+        padding: 6px 12px;
+        max-width: calc(50% - 7.5px);
+    }
+    
+    .romantic-image {
+        max-width: 250px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sticker {
+        animation: none;
+        transform: rotate(-2deg);
+    }
+    .primary-btn:hover,
+    .back-btn:hover {
+        transform: none;
+    }
+}
